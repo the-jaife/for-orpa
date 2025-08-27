@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Orpa 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      font-family: "Poppins", sans-serif;
+    }
+    h1 { font-size: 2.5rem; color: #fff; text-shadow: 2px 2px 6px rgba(0,0,0,0.3); }
+    .btns { margin-top: 20px; }
+    button {
+      background: white; border: none; padding: 15px 25px; margin: 10px;
+      font-size: 1.2rem; border-radius: 12px; cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+    button:hover { transform: scale(1.1); background: #ffe6e6; }
+    #message { margin-top: 30px; font-size: 1.8rem; color: #fff; text-align: center; max-width: 400px; }
+    .hearts { position: fixed; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; z-index: -1; }
+    .heart { position: absolute; color: rgba(255,255,255,0.7); font-size: 20px; animation: float 6s linear infinite; }
+    @keyframes float { 0% { transform: translateY(100vh) scale(1); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
+  </style>
+</head>
+<body>
+  <h1>Orpa, are you still angry? 😟</h1>
+  <div class="btns">
+    <button onclick="angry()">Yes 😡</button>
+    <button onclick="happy()">No 😊</button>
+  </div>
+  <div id="message"></div>
+  <div class="hearts" id="hearts"></div>
+  <script>
+    function angry() {
+      document.getElementById("message").innerText = "Oh nooo 😭 Please forgive me Orpa! I promise to make you smile 💕";
+    }
+    function happy() {
+      document.getElementById("message").innerText = "Yaaay! 😍 You just made my day, Orpa 💖 You're the best!";
+      makeHearts();
+    }
+    function makeHearts() {
+      for (let i = 0; i < 20; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.getElementById("hearts").appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+</body>
+</html>
